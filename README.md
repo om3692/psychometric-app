@@ -1,9 +1,3 @@
-# psychometric-app
-
-Of course. A good README.md file is essential for any project. It acts as a manual, explaining what the project is and how to use it.
-
-Based on all the files you've provided, here is a complete README.md file tailored for your "Psychometric App".
-
 Psychometric App
 A full-stack web application designed to administer and manage psychometric tests. The application supports user authentication with OTP, dynamic test-taking, and an admin panel for uploading questions and reviewing test attempts.
 
