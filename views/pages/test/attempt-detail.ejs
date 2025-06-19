@@ -1,0 +1,15 @@
+<% var title = "Attempt Detail"; %>
+<%- include('../../layouts/header') %>
+
+<div class="form-container">
+  <h3 class="mb-4 text-success text-center">Attempt Details</h3>
+  <% responses.forEach((r, i) => { %>
+    <div class="mb-3">
+      <p><strong>Q<%= i + 1 %>: <%= r.prompt %></strong></p>
+      <p><em>Your Answer:</em> <%= r.answer %></p>
+      <p><em>Time Spent:</em> <%= r.timeSpentSeconds %> seconds</p>
+    </div>
+  <% }) %>
+</div>
+
+<%- include('../../layouts/footer') %>

@@ -1,0 +1,37 @@
+<% var title = "Psychometric Test"; %>
+<%- include('../../layouts/header') %>
+
+<div class="form-container">
+  <h3 class="mb-4 text-success text-center">Psychometric Test</h3>
+
+  <div id="progress-container" class="mb-3 text-center">
+    <div id="progress-text">Question 1 / <%= questions.length %></div>
+    <div class="progress">
+      <div id="progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 0%"></div>
+    </div>
+  </div>
+
+  <div id="question-area" class="mb-4"></div>
+
+  <div class="d-flex justify-content-between">
+    <button id="prev-button" class="btn btn-secondary" disabled>Previous</button>
+    <button id="next-button" class="btn btn-primary">Next</button>
+    <button id="submit-button" class="btn btn-success d-none">Submit</button>
+  </div>
+</div>
+
+<div id="loading-overlay" style="display: none">
+  <div class="text-center mt-5">
+    <div class="spinner-border text-success"></div>
+    <p class="mt-3">Submitting your responses...</p>
+  </div>
+</div>
+
+<input type="hidden" id="attemptId" value="<%= attemptId %>">
+<input type="hidden" id="userId" value="<%= userId %>">
+<script>
+  const questionsData = <%- JSON.stringify(questions) %>;
+</script>
+<script src="/js/testLogic.js"></script>
+
+<%- include('../../layouts/footer') %>

@@ -1,0 +1,19 @@
+<% var title = "User Login"; %>
+<%- include('../../layouts/header') %>
+
+<div class="form-container">
+  <h3 class="mb-4 text-center text-success">User Login</h3>
+  <form action="/login" method="POST">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" name="email" required class="form-control">
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" name="password" required class="form-control">
+    </div>
+    <button type="submit" class="btn btn-green w-100">Login</button>
+  </form>
+</div>
+
+<%- include('../../layouts/footer') %>

@@ -1,0 +1,8 @@
+type,prompt,options,metadata,questionNumber
+likert,I enjoy collaborating with others.,"[""Strongly Disagree"", ""Disagree"", ""Neutral"", ""Agree"", ""Strongly Agree""]",,1
+forced_choice,Choose the most accurate statement.,"[""I prefer flexibility"", ""I prefer structure""]",,2
+ranking,Rank your top work values.,"[""Stability"", ""Creativity"", ""Recognition"", ""Money""]",,3
+multiple_choice,Which tools have you used?,"[""Excel"", ""PowerPoint"", ""Photoshop"", ""Figma""]",,4
+single_choice,Pick your preferred programming language.,"[""Python"", ""Java"", ""C++"", ""JavaScript""]",,5
+image_based,Identify the animal in the image.,"[""Dog"", ""Cat"", ""Horse"", ""Rabbit""]","{""imageUrl"": ""https://example.com/image1.jpg""}",6
+abstract_stimuli,What shape comes next?,,"{""imageUrl"": ""https://example.com/pattern1.png""}",7

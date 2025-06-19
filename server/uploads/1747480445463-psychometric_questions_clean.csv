@@ -1,0 +1,8 @@
+type,prompt,options,questionNumber,metadata
+likert,I enjoy working in teams.,"[""Strongly Disagree"", ""Disagree"", ""Neutral"", ""Agree"", ""Strongly Agree""]",1,
+forced_choice,Choose the statement you agree with the most.,"[""I like challenges"", ""I prefer routine tasks""]",2,
+ranking,Rank the following in order of importance to you.,"[""Work-life balance"", ""Salary"", ""Career Growth"", ""Job Security""]",3,
+multiple_choice,Which of the following activities do you enjoy?,"[""Reading"", ""Traveling"", ""Gaming"", ""Cooking""]",4,
+single_choice,Which environment do you prefer?,"[""Indoor"", ""Outdoor""]",5,
+image_based,What do you see in the image?,"[""A face"", ""A tree"", ""A house""]",6,"{""imageUrl"": ""https://example.com/images/inkblot1.jpg""}"
+abstract_stimuli,Select the shape that completes the pattern.,,7,"{""imageUrl"": ""https://example.com/images/pattern2.jpg""}"

@@ -1,0 +1,19 @@
+<% var title = "Verify OTP"; %>
+<%- include('../../layouts/header') %>
+
+<div class="form-container">
+  <h3 class="mb-4 text-center text-success">Verify OTP</h3>
+  <form action="/verify" method="POST">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" name="email" required class="form-control" value="<%= email || '' %>">
+    </div>
+    <div class="mb-3">
+      <label for="otpCode" class="form-label">OTP Code</label>
+      <input type="text" name="otpCode" required class="form-control">
+    </div>
+    <button type="submit" class="btn btn-green w-100">Verify</button>
+  </form>
+</div>
+
+<%- include('../../layouts/footer') %>

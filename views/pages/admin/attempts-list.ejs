@@ -1,0 +1,45 @@
+<% var title = "User Test Attempts"; %>
+<%- include('../../layouts/header') %>
+
+<div class="container mt-5">
+  <h2 class="text-center text-success mb-4">User Test Attempts</h2>
+
+  <form id="filter-form" method="GET" action="/admin/attempts" class="d-flex gap-2 justify-content-center mb-4">
+    <input type="text" name="email" class="form-control w-auto" placeholder="user email" value="<%= typeof email !== 'undefined' ? email : '' %>">
+    <input type="date" name="startDate" class="form-control w-auto" value="<%= typeof startDate !== 'undefined' ? startDate : '' %>">
+    <input type="date" name="endDate" class="form-control w-auto" value="<%= typeof endDate !== 'undefined' ? endDate : '' %>">
+    <button type="submit" class="btn btn-success">Filter</button>
+    <button type="submit" formaction="/admin/attempts/export" formmethod="GET" class="btn btn-success">Export CSV</button>
+  </form>
+
+  <table class="table table-bordered text-center">
+    <thead class="table-success">
+      <tr>
+        <th>#</th>
+        <th>User Email</th>
+        <th>Question Set</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Duration (s)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (attempts.length === 0) { %>
+        <tr><td colspan="6">No attempts found</td></tr>
+      <% } else { %>
+        <% attempts.forEach((attempt, index) => { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= attempt.useremail || 'N/A' %></td>
+            <td><%= attempt.setname || 'N/A' %></td>
+            <td><%= attempt.startedat ? new Date(attempt.startedat).toLocaleString() : 'Invalid Date' %></td>
+            <td><%= attempt.completedat ? new Date(attempt.completedat).toLocaleString() : 'In Progress' %></td>
+            <td><%= attempt.durationseconds || '-' %></td>
+          </tr>
+        <% }) %>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('../../layouts/footer') %>

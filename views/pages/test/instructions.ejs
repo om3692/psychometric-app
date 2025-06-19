@@ -1,0 +1,24 @@
+<% var title = "Test Instructions"; %>
+<%- include('../../layouts/header') %>
+
+<div class="form-container text-center">
+  <h2 class="text-success mb-4">Welcome to the Psychometric Test</h2>
+
+  <div class="text-start mb-4">
+    <h5 class="fw-bold">Please read the instructions carefully before starting:</h5>
+    <ul class="list-group list-group-flush mt-3">
+      <li class="list-group-item">🧠 The test is designed to understand your thinking style, preferences, and traits.</li>
+      <li class="list-group-item">🕒 There is no time limit per question, but your total test duration will be recorded.</li>
+      <li class="list-group-item">✅ There are no right or wrong answers – be as honest and consistent as possible.</li>
+      <li class="list-group-item">💡 You cannot go back to previous questions once answered.</li>
+      <li class="list-group-item">📤 Once you submit, your responses will be saved and you’ll see a confirmation screen.</li>
+    </ul>
+  </div>
+
+  <form action="/test/start" method="GET">
+    <input type="hidden" name="userId" value="<%= session?.user?.userId %>">
+    <button type="submit" class="btn btn-green btn-lg px-5">Start Test</button>
+  </form>
+</div>
+
+<%- include('../../layouts/footer') %>

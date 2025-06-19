@@ -1,0 +1,8 @@
+type,prompt,options,metadata,questionNumber
+likert,I enjoy working in teams.,"[""Strongly Disagree"", ""Disagree"", ""Neutral"", ""Agree"", ""Strongly Agree""]",,1
+forced_choice,Choose the statement you agree with the most.,"[""I like challenges"", ""I prefer routine tasks""]",,2
+ranking,Rank the following in order of importance.,"[""Work-life balance"", ""Salary"", ""Career Growth"", ""Job Security""]",,3
+multiple_choice,Which are fruits?,"[""Apple"", ""Car"", ""Banana"", ""Grapes""]",,4
+image_based,Identify the object in the image.,"[""Cat"", ""Dog"", ""Rabbit"", ""Horse""]","{""imageUrl"": ""https://example.com/images/dog.jpg""}",5
+abstract_stimuli,What comes next in the pattern?,,"{""imageUrl"": ""https://example.com/images/pattern1.jpg""}",6
+single_choice,Which color is associated with danger?,"[""Red"", ""Green"", ""Blue"", ""Yellow""]",,7

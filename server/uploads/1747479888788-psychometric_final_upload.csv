@@ -1,0 +1,8 @@
+type,prompt,questionNumber,options,metadata
+likert,I enjoy solving problems.,1,"[""Strongly Disagree"", ""Disagree"", ""Neutral"", ""Agree"", ""Strongly Agree""]",
+forced_choice,Choose your preference.,2,"[""Working alone"", ""Working in teams""]",
+ranking,Rank your career priorities.,3,"[""Salary"", ""Work-life balance"", ""Growth"", ""Stability""]",
+multiple_choice,Select all colors you like.,4,"[""Red"", ""Green"", ""Blue"", ""Yellow""]",
+single_choice,Pick your preferred environment.,5,"[""Home"", ""Office"", ""Outdoors"", ""Café""]",
+image_based,What object is shown?,6,"[""Chair"", ""Table"", ""Lamp"", ""Bed""]","{""imageUrl"": ""https://example.com/images/chair.jpg""}"
+abstract_stimuli,What comes next?,7,,"{""imageUrl"": ""https://example.com/images/pattern.jpg""}"

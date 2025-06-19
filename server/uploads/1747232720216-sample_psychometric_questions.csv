@@ -1,0 +1,8 @@
+type,prompt,questionNumber,options,correctAnswer,metadata
+likert,I enjoy working in teams.,1,"[""Strongly Disagree"", ""Disagree"", ""Neutral"", ""Agree"", ""Strongly Agree""]",,
+forced_choice,Choose the statement you agree with the most.,2,"[""I like challenges"", ""I prefer routine tasks""]",,
+ranking,Rank the following in order of importance to you.,3,"[""Work-life balance"", ""Salary"", ""Career Growth"", ""Job Security""]",,
+multiple_choice,Which of the following are programming languages?,4,"[""Python"", ""HTML"", ""CSS"", ""Java""]","[""Python"", ""Java""]",
+image_based,Identify the object in the image.,5,"[""Cat"", ""Dog"", ""Rabbit"", ""Horse""]",Dog,"{""imageUrl"": ""https://example.com/images/dog.jpg""}"
+abstract_stimuli,What comes next in the pattern?,6,,,"{""imageUrl"": ""https://example.com/images/pattern1.jpg""}"
+single_choice,Which color is associated with danger?,7,"[""Red"", ""Green"", ""Blue"", ""Yellow""]",Red,

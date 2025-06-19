@@ -1,0 +1,42 @@
+<% var title = "Upload Questions"; %>
+<%- include('../../layouts/header') %>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+
+      <h3 class="mb-4 text-center text-success">Upload Psychometric Questions (CSV)</h3>
+
+      <% if (typeof message !== 'undefined') { %>
+        <div class="alert <%= message.startsWith('✅') ? 'alert-success' : 'alert-danger' %> text-center">
+          <%= message %>
+        </div>
+      <% } %>
+
+      <form action="/admin/upload" method="POST" enctype="multipart/form-data" class="p-4 border rounded shadow-sm bg-light">
+        <div class="mb-3">
+          <label for="csvFile" class="form-label">Choose CSV File</label>
+          <input type="file" name="csvFile" accept=".csv" required class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label for="setName" class="form-label">Set Name (optional)</label>
+          <input type="text" name="setName" class="form-control" placeholder="e.g., Personality Set 1">
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label">Description (optional)</label>
+          <textarea name="description" rows="3" class="form-control" placeholder="Short description about this question set..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-green w-100">Upload Questions</button>
+      </form>
+
+      <p class="mt-4 text-muted small text-center">
+        Format required: <code>type, prompt, options (JSON or comma-separated), metadata (optional JSON), questionNumber</code>
+      </p>
+    </div>
+  </div>
+</div>
+
+<%- include('../../layouts/footer') %>
