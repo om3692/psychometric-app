@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anannt - Psychometric Assessment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-blue: #0033a0;
+            --brand-yellow: #fbbf24;
+            --brand-orange: #fb923c;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #1e293b;
+        }
+        .section { display: none; }
+        .section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.7s ease-in-out; }
+        
+        .main-container {
+             background: rgba(255, 255, 255, 0.6);
+             backdrop-filter: blur(15px);
+             -webkit-backdrop-filter: blur(15px);
+             border: 1px solid rgba(255, 255, 255, 0.2);
+             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+        .btn-primary {
+            background-color: var(--brand-blue);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 51, 160, 0.2);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(0, 51, 160, 0.3);
+        }
+        /* New styles for Login/Signup page */
+        .auth-image-pane {
+            background-image: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .input-with-icon {
+            position: relative;
+        }
+        .input-with-icon svg {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1.25rem;
+            height: 1.25rem;
+            color: #9ca3af;
+        }
+        .input-with-icon input {
+            padding-left: 2.5rem;
+        }
+        #progressBar {
+            transition: width 0.5s ease-in-out;
+            background: linear-gradient(to right, var(--brand-yellow), var(--brand-orange));
+        }
+        .loader {
+            border: 5px solid #e0e7ff;
+            border-top: 5px solid var(--brand-blue);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .option-btn {
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            text-align: left;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .option-btn:hover {
+            transform: scale(1.03);
+            border-color: var(--brand-blue);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .option-btn.selected {
+            background-color: #dbeafe;
+            border-color: var(--brand-blue);
+            color: var(--brand-blue);
+            transform: scale(1.03);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .option-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            color: var(--brand-blue);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app" class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
+        <!-- Header is now always present, but hidden/shown with JS -->
+        <header id="appHeader" class="hidden flex justify-between items-center mb-8">
+            <img src="Anannt%20Logo.png" alt="Anannt Logo" class="h-12">
+            <button id="logoutButton" class="bg-red-500 text-white px-4 py-2 rounded-lg shadow hover:bg-red-600 transition btn-primary">Logout</button>
+        </header>
+
+        <main class="main-container bg-white rounded-xl overflow-hidden">
+            <!-- Login Section -->
+            <section id="loginSection" class="section">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="auth-image-pane p-12 text-white hidden md:flex flex-col justify-between">
+                        <div>
+                            <img src="Anannt%20Logo.png" alt="Anannt Logo" class="h-12 mb-4">
+                            <h2 class="text-3xl font-bold">Unlock Your Potential</h2>
+                            <p class="mt-2 opacity-80">Discover insights about yourself with our assessment.</p>
+                        </div>
+                        <p class="text-sm opacity-60">&copy; 2025 Anannt</p>
+                    </div>
+                    <div class="p-8 flex items-center justify-center">
+                        <div class="w-full max-w-sm">
+                            <h2 class="text-3xl font-bold text-center mb-2">Welcome Back!</h2>
+                            <p class="text-center text-gray-500 mb-8">Sign in to continue.</p>
+                            <form id="loginForm">
+                                <div class="mb-4 input-with-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg>
+                                    <input type="email" id="loginEmail" placeholder="Email" class="w-full px-4 py-3 bg-white/80 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--brand-blue)]" required>
+                                </div>
+                                <div class="mb-6 input-with-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>
+                                    <input type="password" id="loginPassword" placeholder="Password" class="w-full px-4 py-3 bg-white/80 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--brand-blue)]" required>
+                                </div>
+                                <button type="submit" class="w-full py-3 rounded-lg font-semibold btn-primary">Login</button>
+                            </form>
+                            <p class="text-center mt-6">Don't have an account? <a href="#" id="showSignup" class="text-[var(--brand-blue)] hover:underline font-medium">Sign Up</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Signup Section -->
+            <section id="signupSection" class="section">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="auth-image-pane p-12 text-white hidden md:flex flex-col justify-between">
+                        <div>
+                            <img src="Anannt%20Logo.png" alt="Anannt Logo" class="h-12 mb-4">
+                            <h2 class="text-3xl font-bold">Begin Your Journey</h2>
+                            <p class="mt-2 opacity-80">Create an account to start your self-discovery.</p>
+                        </div>
+                        <p class="text-sm opacity-60">&copy; 2025 Anannt</p>
+                    </div>
+                    <div class="p-8 flex items-center justify-center">
+                        <div class="w-full max-w-sm">
+                            <h2 class="text-3xl font-bold text-center mb-2">Create Account</h2>
+                            <p class="text-center text-gray-500 mb-8">It's quick and easy.</p>
+                             <form id="signupForm">
+                                <div class="mb-4 input-with-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" /></svg>
+                                    <input type="text" id="signupUsername" placeholder="Username" class="w-full px-4 py-3 bg-white/80 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--brand-blue)]" required>
+                                </div>
+                                <div class="mb-4 input-with-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg>
+                                    <input type="email" id="signupEmail" placeholder="Email" class="w-full px-4 py-3 bg-white/80 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--brand-blue)]" required>
+                                </div>
+                                <div class="mb-6 input-with-icon">
+                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>
+                                    <input type="password" id="signupPassword" placeholder="Password" class="w-full px-4 py-3 bg-white/80 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--brand-blue)]" required>
+                                </div>
+                                <button type="submit" class="w-full py-3 rounded-lg font-semibold btn-primary">Sign Up</button>
+                            </form>
+                            <p class="text-center mt-6">Already have an account? <a href="#" id="showLogin" class="text-[var(--brand-blue)] hover:underline font-medium">Login</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dashboard Section -->
+            <section id="dashboardSection" class="section p-8 fade-in">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold mb-4">Welcome, <span id="usernameDisplay">User</span>!</h2>
+                    <p class="text-gray-500 mb-8">Ready to start your assessment? It will only take a few minutes.</p>
+                    <button id="startTestButton" class="bg-green-500 text-white px-8 py-3 rounded-lg font-semibold shadow-lg hover:bg-green-600 transition text-lg btn-primary">Start Test</button>
+                </div>
+
+                <div class="mt-12 border-t pt-8">
+                    <h3 class="text-2xl font-bold text-center mb-4">Admin Panel</h3>
+                    <p class="text-center text-gray-500 mb-6">Upload a new set of questions for the test.</p>
+                    <form id="uploadForm" class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-lg mx-auto">
+                        <input type="file" id="questionsFile" accept=".csv" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer" required>
+                        <button type="submit" class="w-full sm:w-auto px-6 py-2 rounded-lg font-semibold btn-primary">Upload CSV</button>
+                    </form>
+                    <div class="text-center mt-4">
+                        <button id="downloadCsvButton" class="text-[var(--brand-blue)] hover:underline font-medium">Download Sample CSV</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Test Section -->
+            <section id="testSection" class="section p-8 fade-in">
+                <div id="loader" class="loader hidden"></div>
+                <div id="testContent">
+                    <div class="mb-8">
+                        <div class="flex justify-between items-center mb-1">
+                             <button id="backButton" class="text-sm font-medium text-[var(--brand-blue)] hover:underline hidden">
+                                &larr; Back
+                            </button>
+                            <span class="text-base font-medium text-gray-600">Progress</span>
+                            <span id="progressText" class="text-sm font-medium text-gray-600">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5"><div id="progressBar" class="h-2.5 rounded-full" style="width: 0%"></div></div>
+                    </div>
+                    <div id="questionContainer" class="text-center">
+                        <h3 id="questionText" class="text-3xl mb-10 min-h-[6rem]">Loading questions...</h3>
+                        <div id="optionsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="section p-8 fade-in">
+                <h2 class="text-3xl font-bold text-center mb-6">Your Assessment Results</h2>
+                <div class="max-w-2xl mx-auto"><canvas id="resultsChart"></canvas></div>
+                <div id="interpretation" class="mt-8 text-center bg-blue-50 p-6 rounded-lg border border-blue-200">
+                    <h3 class="text-2xl font-semibold mb-2 text-[var(--brand-blue)]" id="dominantTrait"></h3>
+                    <p id="interpretationText" class="text-gray-600 leading-relaxed"></p>
+                </div>
+                 <div class="text-center mt-8">
+                    <button id="retakeTestButton" class="px-8 py-3 rounded-lg font-semibold text-lg btn-primary">Retake Test</button>
+                </div>
+            </section>
+        </main>
+        
+        <footer id="appFooter" class="hidden text-center p-8 text-gray-500">
+            <img src="Anannt%20Logo.png" alt="Anannt Logo" class="h-8 mx-auto mb-4">
+            <p>&copy; 2025 Anannt. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

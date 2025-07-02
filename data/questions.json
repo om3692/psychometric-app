@@ -1,0 +1,212 @@
+[
+  {
+    "question": "When faced with a difficult problem, you prefer to:",
+    "options": [
+      {
+        "text": "Analyze it logically and systematically.",
+        "type": "Analytical"
+      },
+      {
+        "text": "Brainstorm creative and unconventional solutions.",
+        "type": "Creative"
+      },
+      {
+        "text": "Collaborate with others to find a solution.",
+        "type": "Collaborative"
+      },
+      {
+        "text": "Take immediate action and learn by doing.",
+        "type": "Action-Oriented"
+      }
+    ]
+  },
+  {
+    "question": "In a social gathering, you are more likely to:",
+    "options": [
+      {
+        "text": "Engage in deep, one-on-one conversations.",
+        "type": "Analytical"
+      },
+      {
+        "text": "Be the life of the party, telling stories.",
+        "type": "Creative"
+      },
+      {
+        "text": "Introduce people and facilitate connections.",
+        "type": "Collaborative"
+      },
+      {
+        "text": "Organize an activity or a game.",
+        "type": "Action-Oriented"
+      }
+    ]
+  },
+  {
+    "question": "Your ideal work environment is:",
+    "options": [
+      {
+        "text": "Quiet, organized, and focused on individual tasks.",
+        "type": "Analytical"
+      },
+      {
+        "text": "Dynamic, inspiring, and full of new ideas.",
+        "type": "Creative"
+      },
+      {
+        "text": "A supportive team where everyone helps each other.",
+        "type": "Collaborative"
+      },
+      {
+        "text": "Fast-paced, with clear goals and tangible results.",
+        "type": "Action-Oriented"
+      }
+    ]
+  },
+  {
+    "question": "When learning a new skill, you prefer:",
+    "options": [
+      {
+        "text": "Reading books and understanding the theory first.",
+        "type": "Analytical"
+      },
+      {
+        "text": "Experimenting and finding your own way.",
+        "type": "Creative"
+      },
+      {
+        "text": "Taking a class or learning with a group.",
+        "type": "Collaborative"
+      },
+      {
+        "text": "Jumping right in with a hands-on project.",
+        "type": "Action-Oriented"
+      }
+    ]
+  },
+  {
+    "question": "How do you typically make important decisions?",
+    "options": [
+      {
+        "text": "By weighing the pros and cons carefully.",
+        "type": "Analytical"
+      },
+      {
+        "text": "By trusting your intuition and gut feeling.",
+        "type": "Creative"
+      },
+      {
+        "text": "By discussing it with trusted friends or family.",
+        "type": "Collaborative"
+      },
+      {
+        "text": "By choosing the option that leads to the quickest progress.",
+        "type": "Action-Oriented"
+      }
+    ]
+  },
+  {
+    "question": "When planning a vacation, you are most likely to:",
+    "options": [
+      {
+        "text": "Create a detailed itinerary with a budget for each day.",
+        "type": "Analytical"
+      },
+      {
+        "text": "Choose a destination and see where the adventure takes you.",
+        "type": "Creative"
+      },
+      {
+        "text": "Plan a group trip with friends or family.",
+        "type": "Collaborative"
+      },
+      {
+        "text": "Book the flights and first hotel, then figure out the rest there.",
+        "type": "Action-Oriented"
+      }
+    ]
+  },
+  {
+    "question": "Which of these hobbies appeals to you most?",
+    "options": [
+      {
+        "text": "Chess or Sudoku puzzles.",
+        "type": "Analytical"
+      },
+      {
+        "text": "Painting, writing, or playing music.",
+        "type": "Creative"
+      },
+      {
+        "text": "Joining a sports team or a book club.",
+        "type": "Collaborative"
+      },
+      {
+        "text": "Gardening, hiking, or building models.",
+        "type": "Action-Oriented"
+      }
+    ]
+  },
+  {
+    "question": "When you receive feedback, your first reaction is to:",
+    "options": [
+      {
+        "text": "Analyze it for specific, actionable points.",
+        "type": "Analytical"
+      },
+      {
+        "text": "Consider how it could inspire a new approach.",
+        "type": "Creative"
+      },
+      {
+        "text": "Discuss it with the person who gave it to understand their perspective.",
+        "type": "Collaborative"
+      },
+      {
+        "text": "Immediately start working on the suggested improvements.",
+        "type": "Action-Oriented"
+      }
+    ]
+  },
+  {
+    "question": "You feel most energized when you are:",
+    "options": [
+      {
+        "text": "Solving a complex problem or learning something new.",
+        "type": "Analytical"
+      },
+      {
+        "text": "Creating something entirely from scratch.",
+        "type": "Creative"
+      },
+      {
+        "text": "Helping others and working as part of a team.",
+        "type": "Collaborative"
+      },
+      {
+        "text": "Completing tasks and seeing your progress.",
+        "type": "Action-Oriented"
+      }
+    ]
+  },
+  {
+    "question": "A project is falling behind schedule. What do you do?",
+    "options": [
+      {
+        "text": "Re-evaluate the project plan to find inefficiencies.",
+        "type": "Analytical"
+      },
+      {
+        "text": "Suggest a radical new direction to save time.",
+        "type": "Creative"
+      },
+      {
+        "text": "Call a team meeting to get everyone's input on how to move forward.",
+        "type": "Collaborative"
+      },
+      {
+        "text": "Work extra hours to push the project over the finish line.",
+        "type": "Action-Oriented"
+      }
+    ]
+  }
+]
